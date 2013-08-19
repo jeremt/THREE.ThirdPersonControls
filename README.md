@@ -2,6 +2,7 @@ THREE.ThirdPersonControls
 =========================
 
 Simple thrid person controller for THREE applications.
+Take a look at the live demo [right here](http://jeremt.github.io/THREE.ThirdPersonControls/).
 
 Usage
 -----
