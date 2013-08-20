@@ -17,7 +17,8 @@ var _defaultParams = {
   moveSpeed: 200,
   rotateSpeed: Math.PI / 2,
   offset: new THREE.Vector3(0, 50, 200),
-  keyMapping: 'qwerty'
+  keyMapping: 'qwerty',
+  contraints: new THREE.Vector2(0, 0)
 };
 
 /**
@@ -95,14 +96,18 @@ THREE.ThirdPersonControls.prototype.update = function (delta) {
   // update rotations from input.
   var r = _keys[this.keyMapping].rotate;
   var rotation_matrix = new THREE.Matrix4().identity();
-  if (THREE.Input.isKeyPressed(r.left))
-    this.target.rotateOnAxis(new THREE.Vector3(0,1,0), rotateAngle);
-  if (THREE.Input.isKeyPressed(r.right))
-    this.target.rotateOnAxis(new THREE.Vector3(0,1,0), -rotateAngle);
-  if (THREE.Input.isKeyPressed(r.up))
-    this.target.rotateOnAxis(new THREE.Vector3(1,0,0), rotateAngle);
-  if (THREE.Input.isKeyPressed(r.down))
-    this.target.rotateOnAxis(new THREE.Vector3(1,0,0), -rotateAngle);
+  if (this.contraints.x === 0) {
+    if (THREE.Input.isKeyPressed(r.up))
+      this.target.rotateOnAxis(new THREE.Vector3(1,0,0), rotateAngle);
+    if (THREE.Input.isKeyPressed(r.down))
+      this.target.rotateOnAxis(new THREE.Vector3(1,0,0), -rotateAngle);
+  }
+  if (this.contraints.y === 0) {
+    if (THREE.Input.isKeyPressed(r.left))
+      this.target.rotateOnAxis(new THREE.Vector3(0,1,0), rotateAngle);
+    if (THREE.Input.isKeyPressed(r.right))
+      this.target.rotateOnAxis(new THREE.Vector3(0,1,0), -rotateAngle);
+  }
 
   // place camera.
   

@@ -35,3 +35,4 @@ tpsControls.update(deltaTime);
 - __rotateSpeed__ - rotation speed value (optional)
 - __offset__ - position offset between camera and target (optional)
 - __keyMapping__ - key mapping to use (azerty or qwerty)
+- __contraints__ - Add contraints on rotations axis.
